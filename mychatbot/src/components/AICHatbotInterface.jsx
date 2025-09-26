@@ -38,7 +38,7 @@ const AIChatbotInterface = () => {
   const [messages, setMessages] = useState([
     {
       id: 1,
-      text: "Hello! I'm your AI assistant. How can I help you today?",
+      text: "Hell! I'm your AI assistant. How can I help you today?",
       sender: "bot",
       timestamp: new Date(),
     },
