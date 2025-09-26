@@ -111,23 +111,15 @@ const AIChatbotInterface = () => {
 
   const handleFileAttachment = (event) => {
     const files = Array.from(event.target.files);
-    // NOTE: File upload requires conversion to Base64/Part format for the Gemini API.
-    // For now, we only store the file objects, but they are not sent to the API yet.
     setAttachedFiles((prev) => [...prev, ...files]);
   };
 
   const removeFile = (index) => {
     setAttachedFiles((prev) => prev.filter((_, i) => i !== index));
   };
-
-  // ----------------------------------------------------
-  // 🌟 CORRECTED sendMessage FUNCTION 🌟
-  // ----------------------------------------------------
   const sendMessage = async () => {
-    // Prevent sending if no text and no files are provided, or if the API client isn't ready
     if (!ai || (!inputText.trim() && attachedFiles.length === 0)) return;
 
-    // 1. Prepare and Add User Message
     const userMessageText = inputText;
     const newMessage = {
       id: Date.now(),
